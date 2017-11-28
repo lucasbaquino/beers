@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Mr Beer</string>
+    <string name="onboarding_collection">Coleções</string>
+    <string name="onboarding_detail">Detalhes</string>
+    <string name="onboarding_share">Compartilhe</string>
+    <string name="onboarding_collection_explanation">Tenha acesso a uma vasta base de informações de rótulos ao redor do mundo.</string>
+    <string name="onboarding_detail_exaplanation">Tenha acesso a informações detalhadas de cada cerveja.</string>
+    <string name="onboarding_detail_share">Compartilhe rótulos com os seus amigos!</string>
+    <string name="ok_lets_start">Ok, vamos começar!</string>
+    <string name="falha_de_conexao">Ocorreu uma falha de comunicação com o serviço. Verifique sua conexão e tente novamente.</string>
+    <string name="erro_inesperado">Ocorreu um erro inesperado.</string>
+    <string name="ibu">IBU: %1$s</string>
+    <string name="abv">ABV: %1$s</string>
+    <string name="conteudo_indisponivel">Infelizmente não temos nenhum conteúdo para você :(</string>
+    <string name="is_organic">Is Organic</string>
+    <string name="abv_detail">ABV</string>
+    <string name="ibu_detail">IBU</string>
+</resources>

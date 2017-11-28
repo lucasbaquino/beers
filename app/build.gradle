@@ -1,0 +1,125 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "mobi.lucasborges.mrbeer"
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    testOptions{
+        unitTests.returnDefaultValues = true
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+}
+
+ext {
+    arch_components_version = '1.0.0'
+    arch_paging = '1.0.0-alpha3'
+    anko_version = '0.10.1'
+    gson_version = '2.8.0'
+    dagger_version = "2.8"
+    rxjava_version = '2.0.1'
+    retrofit_version = '2.3.0'
+    secure_preferences_version = '0.1.4'
+    snacky_version = '1.0.2'
+
+    // App dependencies
+    supportLibraryVersion = '26.1.0'
+    guavaVersion = '22.0-android'
+    junitVersion = '4.12'
+    mockitoVersion = '2.8.47'
+    hamcrestVersion = '1.3'
+    runnerVersion = '1.0.1'
+    rulesVersion = '1.0.1'
+    espressoVersion = '3.0.1'
+}
+
+kapt {
+    generateStubs = true
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+
+    compile project(':domain')
+    compile project(':data')
+
+    // AAC
+    implementation "android.arch.lifecycle:extensions:$arch_components_version"
+    kapt "android.arch.lifecycle:compiler:$arch_components_version"
+    implementation "android.arch.persistence.room:rxjava2:$arch_components_version"
+    implementation "android.arch.paging:runtime:$arch_paging"
+    // Gson
+    implementation "com.google.code.gson:gson:$gson_version"
+    // Dagger
+    implementation "com.google.dagger:dagger:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    provided 'org.glassfish:javax.annotation:10.0-b28'
+    // Anko
+    implementation "org.jetbrains.anko:anko-commons:$anko_version"
+    implementation "org.jetbrains.anko:anko-coroutines:$anko_version"
+    // Picasso
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    // Stepper
+    compile 'com.github.badoualy:stepper-indicator:1.0.6'
+    // Lottie
+    compile 'com.airbnb.android:lottie:2.3.0'
+    // OnBoarding
+    compile 'com.codemybrainsout.onboarding:onboarder:1.0.4'
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    androidTestImplementation "org.mockito:mockito-core:2.12.0"
+
+
+    // Dependencies for local unit tests
+    testCompile "junit:junit:$junitVersion"
+    testCompile "org.mockito:mockito-core:$mockitoVersion"
+    testCompile "org.hamcrest:hamcrest-all:$hamcrestVersion"
+
+    testCompile "android.arch.core:core-testing:$arch_components_version"
+
+    // Android Testing Support Library's runner and rules
+    androidTestCompile "com.android.support.test:runner:$runnerVersion"
+    androidTestCompile "com.android.support.test:rules:$rulesVersion"
+
+    // Dependencies for Android unit tests
+    androidTestCompile "junit:junit:$junitVersion"
+    androidTestCompile "org.mockito:mockito-android:$mockitoVersion"
+
+    // Espresso UI Testing
+    androidTestCompile "com.android.support.test.espresso:espresso-core:$espressoVersion"
+    androidTestCompile "com.android.support.test.espresso:espresso-contrib:$espressoVersion"
+    androidTestCompile "com.android.support.test.espresso:espresso-intents:$espressoVersion"
+    androidTestCompile "com.android.support.test.espresso.idling:idling-concurrent:$espressoVersion"
+    compile "com.android.support.test.espresso:espresso-idling-resource:$espressoVersion"
+
+    // Resolve conflicts between main and test APK:
+    androidTestCompile "com.android.support:support-annotations:$supportLibraryVersion"
+    androidTestCompile "com.android.support:support-v4:$supportLibraryVersion"
+    androidTestCompile "com.android.support:recyclerview-v7:$supportLibraryVersion"
+    androidTestCompile "com.android.support:appcompat-v7:$supportLibraryVersion"
+    androidTestCompile "com.android.support:support-compat:$supportLibraryVersion"
+    androidTestCompile "com.android.support:design:$supportLibraryVersion"
+    androidTestCompile "com.android.support.test.espresso.idling:idling-concurrent:$espressoVersion"
+    androidTestCompile "android.arch.persistence.room:testing:$arch_components_version"
+
+}
